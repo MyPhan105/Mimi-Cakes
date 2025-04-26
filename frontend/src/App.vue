@@ -30,7 +30,7 @@ header[role="banner"] {
 
 /* Add styling for the logo text */
 #logo-main {
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   color: #eae2b0;
   font-family: 'Caveat', cursive;
   margin: 0;
@@ -39,7 +39,7 @@ header[role="banner"] {
 /* Body background and padding */
 body {
   background-color: #353434;
-  margin-top: 100px; /* Space for the navbar (adjust as needed) */
+  margin-top: 70px; /* Space for the navbar (adjust as needed) */
 }
 
 /* Importing the font for the logo */

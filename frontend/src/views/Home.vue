@@ -18,6 +18,22 @@
         Your browser does not support the video tag.
       </video>
     </div>
+        
+    <!-- Descriptive Paragraph -->
+    <h2 style="font-family: 'Quicksand', sans-serif; color: #eae2b0; text-align: center; position: relative; top: 70vh; font-size: 32px;">
+  Indulge in the irresistible flavors of Mimi Cakes!
+      <span style="position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%); width: 5%; height: 2px; background-color: #eae2b0;"></span>
+    </h2>
+
+
+
+
+
+    <div class="intro-text">
+        <h2>
+            Discover a world of elegant floral cupcakes, beautifully crafted cakes, and more. Our signature chiffon cakes, topped with silky Italian meringue buttercream, offer a dreamy, creamy experience you won’t forget. Perfect for any occasion, each bite is a blend of lightness and luxury. Treat yourself to the ultimate in dessert perfection—Mimi Cakes is where flavor meets artistry. Order now and let us make your celebrations unforgettable!
+        </h2>
+    </div>
   </template>
   
   <script>
@@ -35,6 +51,10 @@
 
   /* Import the Sacramento font */
   @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+ /* Import the Quicksand font */
+  @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+
 
   /* Full-screen video */
   .fullscreen-video {
@@ -86,7 +106,20 @@
 
 }
 
-
+/* Intro Paragraph */
+.intro-text {
+  position: relative;
+  top: 80vh; /* Position below the video */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 18px;
+  color: white;
+  width: 80%; /* Adjust width to make it fit */
+  text-align: center;
+  z-index: 1; /* Ensure paragraph is above the video */
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5); /* Add a slight background to improve visibility */
+}   
   .home {
     position: relative;
     z-index: 1; /* Ensures other content is above the video */
