@@ -8,16 +8,15 @@ header[role="banner"] {
     font-size: 2.5rem;
     color: #ffffff; /* Logo text color */
     font-family: 'Caveat', cursive; /* Cute handwritten font */
-    padding-top: 40px;
-    margin-bottom: 90px;
+
   }
   
   /* Style for navbar */
   #navbar-primary {
     background-color: #020202 !important; /* Custom background for navbar */
     border: none;
-    position: fixed;
-    top: 150px; /* Push it down below logo */
+    position: relative;
+    top: 40px; /* Push it down below logo */
     left: 0;
     width: 100%;
     z-index: 9999;
@@ -71,7 +70,7 @@ header[role="banner"] {
   /* Body background and padding */
   body {
     background-color: #353434; /* Dark background color */
-    padding-top: 150px; /* Enough room for logo + navbar */
+    padding-top: 20px; /* Enough room for logo + navbar */
     margin: 0; /* Ensure no body margin */
     color: #fff; /* Default text color */
     font-family: 'Poppins', sans-serif;

@@ -4,7 +4,7 @@
       <h1 id="logo-main">Mimi Cakes</h1> <!-- Logo text -->
     </header>
 
-    <Navbar /> <!-- Navbar stays under logo -->
+    <Navbar /> <!-- Navbar stays under the logo -->
 
     <router-view /> <!-- Page content goes here -->
   </div>
@@ -39,7 +39,7 @@ header[role="banner"] {
 /* Body background and padding */
 body {
   background-color: #353434;
-  padding-top: 0; /* <<< REMOVE padding-top since navbar is not fixed now */
+  margin-top: 100px; /* Space for the navbar (adjust as needed) */
 }
 
 /* Importing the font for the logo */
