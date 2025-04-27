@@ -40,7 +40,7 @@ header[role="banner"] {
 
 /* Body background and padding */
 body {
-  background-color: #323030;
+  background-color: #383838;
   margin-top: 70px; /* Space for the navbar (adjust as needed) */
 }
 
