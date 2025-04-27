@@ -1,11 +1,20 @@
 <template>
     <footer class="footer">
       <div class="footer-content">
+
         <div class="social-links">
-          <a href="#" class="social-icon">Facebook</a>
-          <a href="#" class="social-icon">Instagram</a>
-          <a href="#" class="social-icon">Tiktok</a>
+            <a href="#" class="social-icon">
+                <i class="fab fa-facebook-f"></i> Facebook
+            </a>
+            <a href="#" class="social-icon">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+            <a href="#" class="social-icon">
+                <i class="fab fa-tiktok"></i> Tiktok
+            </a>
         </div>
+
+
         <p class="copyright">&copy; 2025 Mimi Cakes. All rights reserved.</p>
       </div>
     </footer>
@@ -35,19 +44,23 @@
   justify-content: space-between; /* push social links to top, copyright to bottom */
 }
   
-  .social-links {
-    margin-top: 5px;
-  }
+.social-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* In case it gets too long on small screens */
+  margin-top: 40px;
+}
   
-  .social-icon {
+.social-icon {
   display: inline-block;
-  margin: 0 10px;
-  padding: 8px 16px;
-  border: 1px solid #fff; /* white outline */
-  color: #fff;
+  margin: 0 15px;
+  padding: 12px 24px; /* bigger padding = bigger button */
+  border: 2px solid #878686; /* thicker white outline */
+  color: #ffffff;
   text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s;
+  font-size: 1.2rem; /* bigger text */
+  transition: all 0.4s ease;
 }
   
 .social-icon:hover {
@@ -60,6 +73,11 @@
   font-size: 0.9rem;
   margin-bottom: 10px; /* optional, tiny bottom space */
 }
+
+.social-icon i {
+  margin-right: 8px; /* adds a little space between the logo and text */
+}
+
 
 </style>
   
