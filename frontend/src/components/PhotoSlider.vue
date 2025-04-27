@@ -34,16 +34,14 @@
       };
     },
     methods: {
-      prevSlide() {
-        if (this.currentIndex > 0) {
-          this.currentIndex--;
-        }
-      },
-      nextSlide() {
-        if (this.currentIndex < this.images.length - 4) { // Ensure 4 images are visible
-          this.currentIndex++;
-        }
-      },
+        prevSlide() {
+            // Move the last image to the first position
+            this.images.unshift(this.images.pop());
+        },
+        nextSlide() {
+            // Move the first image to the last position
+            this.images.push(this.images.shift());
+        },
     },
     computed: {
       sliderStyle() {
