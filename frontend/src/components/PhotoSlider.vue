@@ -62,6 +62,7 @@
     position: relative;
     width: 80%;  /* Adjust to fit your design */
     margin: 0 auto;
+    margin-top: 20px; 
   }
   
   .photo-slider {
@@ -71,7 +72,7 @@
   .slider-track {
     display: flex;
     transition: transform 0.3s ease;
-    gap: 40px; 
+    gap: 30px; 
   }
   
   .photo {

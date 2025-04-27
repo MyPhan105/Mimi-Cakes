@@ -20,7 +20,7 @@
       </router-link>
 
       <!-- Descriptive Paragraph -->
-      <div>
+      <div class="content-above-slider">
         <h1 class="intro-heading" style="font-family: 'Playfair Display', serif; text-transform: uppercase;">
           Indulge in the irresistible flavors of Mimi Cakes!
           <span class="underline"></span>
@@ -182,7 +182,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 400px;
+    margin: 100px;
     flex-wrap: wrap;
     margin-top: 120px;
   }
@@ -238,5 +238,10 @@
       font-size: 20px;
     }
   }
+  .content-above-slider {
+  margin-bottom: 10px; /* Adjust this value to control the space between the two elements */
+}
+
+
   </style>
   
