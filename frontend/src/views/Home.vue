@@ -34,13 +34,14 @@
           </h2>
           <br>
           <h2>
-            Discover a world of elegant floral cupcakes, beautifully crafted cakes, and more. 
-            Our signature chiffon cakes, topped with silky Italian meringue buttercream, offer a dreamy, creamy experience you won’t forget. 
-            Perfect for any occasion, each bite is a blend of lightness and luxury. </h2> 
-            <br>
-            <h2>
-            Treat yourself to the ultimate in dessert perfection—Mimi Cakes is where flavor meets artistry. 
-            Order now and let us make your celebrations unforgettable!
+            Step into a sweet little wonderland of delicate floral cupcakes, beautifully crafted cakes, and so much more! 
+            Our signature chiffon cakes, topped with dreamy Italian meringue buttercream, will melt in your mouth and take you to dessert heaven. 
+            Each bite is a perfect balance of lightness and luxury, making every moment feel extra special.
+          </h2> 
+          <br>
+          <h2>
+            Why wait? Treat yourself to a slice of perfection with Mimi Cakes – where every bite is a work of art! Order now, 
+            and let’s make your celebrations as unforgettable as your sweet tooth!
           </h2>
         </div>
         <div class="image-container">
@@ -180,6 +181,7 @@
   .image-container img {
     width: 110%;
     max-width: 500px;
+    max-height: 500px;
     height: auto;
     border-radius: 10px;
   }
