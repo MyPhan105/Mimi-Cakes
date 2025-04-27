@@ -7,16 +7,19 @@
     <Navbar /> <!-- Navbar stays under the logo -->
 
     <router-view /> <!-- Page content goes here -->
+    <Footer /> <!-- Add the footer here -->
   </div>
 </template>
 
 <script>
 import Navbar from './components/Navbar.vue'
+import Footer from './components/Footer.vue'
 
 export default {
   name: 'App',
   components: {
-    Navbar
+    Navbar,
+    Footer,
   }
 }
 </script>
@@ -40,9 +43,18 @@ header[role="banner"] {
 
 /* Body background and padding */
 body {
-  background-color: #323030;
+  background-color: #383838;
   margin-top: 70px; /* Space for the navbar (adjust as needed) */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures the body takes full height of the viewport */
 }
-
-
+#app {
+  flex-grow: 1; /* This ensures that the content area takes the available space */
+  display: flex;
+  flex-direction: column;
+}
+footer {
+  margin-top: auto; /* Ensures the footer stays at the bottom of the page */
+}
 </style>
