@@ -20,17 +20,24 @@
       </router-link>
   
       <!-- Descriptive Paragraph -->
-      <h1 class="intro-heading">
+      <h1 class="intro-heading" style="font-family: 'Playfair Display', serif; text-transform: uppercase;">
         Indulge in the irresistible flavors of Mimi Cakes!
         <span class="underline"></span>
       </h1>
+
+
       
       <div class="intro-flex">
         <div class="intro-text">
+          <h2 style="font-family: 'Quicksand', sans-serif; color: #eae2b0; font-weight: bold;">
+            Indulge in the Art of Dessert: Mimi Cakes for Every Occasion
+          </h2>
+          <br>
           <h2>
             Discover a world of elegant floral cupcakes, beautifully crafted cakes, and more. 
             Our signature chiffon cakes, topped with silky Italian meringue buttercream, offer a dreamy, creamy experience you won’t forget. 
-            Perfect for any occasion, each bite is a blend of lightness and luxury. </h2>
+            Perfect for any occasion, each bite is a blend of lightness and luxury. </h2> 
+            <br>
             <h2>
             Treat yourself to the ultimate in dessert perfection—Mimi Cakes is where flavor meets artistry. 
             Order now and let us make your celebrations unforgettable!
@@ -40,6 +47,13 @@
           <img src="@/assets/Homepage1.jpg" alt="Bakery Image" />
         </div>
       </div>
+
+      <!-- Slider-->
+      <div>
+
+      </div>
+
+
     </div>
   </template>
   
@@ -59,6 +73,10 @@
   @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
   /* Import the Quicksand font */
   @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+  /* Import the Playfair Display font */
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+
   
   /* Full-screen video container */
   .video-container {
@@ -114,7 +132,7 @@
   /* Intro Heading */
   .intro-heading {
     font-family: 'Quicksand', sans-serif;
-    color: #eae2b0;
+    color: #ffffff;
     text-align: center;
     position: relative;
     top: 5vh; /* Adjusted position to place it properly below the video and above the paragraph */
@@ -128,7 +146,7 @@
     transform: translateX(-50%);
     width: 5%;
     height: 2px;
-    background-color: #eae2b0;
+    background-color: #ffffff;
   }
   
 
@@ -176,7 +194,7 @@
   
     .intro-text {
       text-align: center;
-      padding-right: 0;
+      padding-right: 2;
       margin-bottom: 20px;
     }
   
