@@ -18,49 +18,53 @@
       <router-link to="/order" class="order-btn">
         Order Now
       </router-link>
-  
+
       <!-- Descriptive Paragraph -->
-      <h1 class="intro-heading" style="font-family: 'Playfair Display', serif; text-transform: uppercase;">
-        Indulge in the irresistible flavors of Mimi Cakes!
-        <span class="underline"></span>
-      </h1>
+      <div>
+        <h1 class="intro-heading" style="font-family: 'Playfair Display', serif; text-transform: uppercase;">
+          Indulge in the irresistible flavors of Mimi Cakes!
+          <span class="underline"></span>
+        </h1>
 
+        <div class="intro-flex">
+          <div class="intro-text">
+            <h2 style="font-family: 'Quicksand', sans-serif; color: #eae2b0; font-weight: bold;">
+              Indulge in the Art of Dessert: Mimi Cakes for Every Occasion
+            </h2>
+            <br>
+            <h2>
+              Step into a sweet little wonderland of delicate floral cupcakes, beautifully crafted cakes, and so much more! 
+              Our signature chiffon cakes, topped with dreamy Italian meringue buttercream, will melt in your mouth and take you to dessert heaven. 
+              Each bite is a perfect balance of lightness and luxury, making every moment feel extra special.
+            </h2> 
+            <br>
+            <h2>
+              Why wait? Treat yourself to a slice of perfection with Mimi Cakes – where every bite is a work of art! Order now, 
+              and let’s make your celebrations as unforgettable as your sweet tooth!
+            </h2>
+          </div>
 
-      
-      <div class="intro-flex">
-        <div class="intro-text">
-          <h2 style="font-family: 'Quicksand', sans-serif; color: #eae2b0; font-weight: bold;">
-            Indulge in the Art of Dessert: Mimi Cakes for Every Occasion
-          </h2>
-          <br>
-          <h2>
-            Step into a sweet little wonderland of delicate floral cupcakes, beautifully crafted cakes, and so much more! 
-            Our signature chiffon cakes, topped with dreamy Italian meringue buttercream, will melt in your mouth and take you to dessert heaven. 
-            Each bite is a perfect balance of lightness and luxury, making every moment feel extra special.
-          </h2> 
-          <br>
-          <h2>
-            Why wait? Treat yourself to a slice of perfection with Mimi Cakes – where every bite is a work of art! Order now, 
-            and let’s make your celebrations as unforgettable as your sweet tooth!
-          </h2>
-        </div>
-        <div class="image-container">
-          <img src="@/assets/Homepage1.jpg" alt="Bakery Image" />
+          <div class="image-container">
+            <img src="@/assets/Homepage1.jpg" alt="Bakery Image" />
+          </div>
         </div>
       </div>
 
       <!-- Slider-->
-      <div>
-
-      </div>
+      <PhotoSlider />
 
 
     </div>
   </template>
   
   <script>
+  import PhotoSlider from '@/components/PhotoSlider.vue'; // import PhotoSlider
+
   export default {
     name: 'Home',
+    components: {
+    PhotoSlider, // register 
+  },
     mounted() {
       // Access the video element using Vue's $refs
       const video = this.$refs.myVideo;
@@ -106,11 +110,12 @@
     border: none;
     border-radius: 5px;
     opacity: 0; /* Start invisible */
-    animation: riseUp 0.5s ease-out forwards; /* Animation settings */
+    animation: riseUp 0.9s ease-out forwards; /* Animation settings */
     cursor: pointer;
     text-decoration: none;
     z-index: 1;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* stronger shadow */    transition: 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* stronger shadow */    
+    transition: 
       background-color 0.3s ease, 
       color 0.3s ease,
       transform 0.3s ease,
@@ -137,7 +142,7 @@
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     opacity: 0; /* Start invisible */
-    animation: riseUp 0.5s ease-out forwards; /* Same animation as the button */
+    animation: riseUp 0.9s ease-out forwards; /* Same animation as the button */
   }
   
     /* Animation keyframes */
