@@ -22,6 +22,8 @@ export default {
 </script>
 
 <style>
+/* Importing the font for the logo */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
 /* Style for header banner (the logo) */
 header[role="banner"] {
   text-align: center;
@@ -38,10 +40,9 @@ header[role="banner"] {
 
 /* Body background and padding */
 body {
-  background-color: #353434;
+  background-color: #323030;
   margin-top: 70px; /* Space for the navbar (adjust as needed) */
 }
 
-/* Importing the font for the logo */
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
+
 </style>
