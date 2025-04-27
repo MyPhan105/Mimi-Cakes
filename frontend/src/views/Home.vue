@@ -101,19 +101,27 @@
     transform: translateX(-50%);
     background-color: #7dc7c1;
     color: white;
-    padding: 10px 20px;
+    padding: 15px 30px;
     font-size: 40px;
     border: none;
     border-radius: 5px;
+    opacity: 0; /* Start invisible */
+    animation: riseUp 0.5s ease-out forwards; /* Animation settings */
     cursor: pointer;
     text-decoration: none;
     z-index: 1;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* stronger shadow */    transition: 
+      background-color 0.3s ease, 
+      color 0.3s ease,
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
   }
   
   .order-btn:hover {
     background-color: transparent;
     color: #7dc7c1;
+    transform: translateX(-50%) scale(1.08); /* Keep X centering while scaling */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
     border: 2px solid #7dc7c1;
   }
   
@@ -128,8 +136,21 @@
     color: white;
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    opacity: 0; /* Start invisible */
+    animation: riseUp 0.5s ease-out forwards; /* Same animation as the button */
   }
   
+    /* Animation keyframes */
+  @keyframes riseUp {
+    0% {
+      transform: translateX(-50%) translateY(50px); /* Start lower */
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(-50%) translateY(0); /* Rise to normal */
+      opacity: 1;
+    }
+  }
   /* Intro Heading */
   .intro-heading {
     font-family: 'Quicksand', sans-serif;
