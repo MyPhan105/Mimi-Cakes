@@ -7,9 +7,11 @@
   
         <div class="collapse navbar-collapse" id="navbar-primary-collapse">
           <ul class="navbar-nav">
-            <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Cakes</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+            <li class="nav-item">
+            <router-link to="/" class="nav-link">Home</router-link>  <!-- "Home" button with router-link -->
+            </li>
+            <li class="nav-item"><router-link to="/order" class="nav-link">Order</router-link></li> <!-- "Order" button with router-link -->
+            <li class="nav-item"><router-link to="/about" class="nav-link">About</router-link></li>
             <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
           </ul>
