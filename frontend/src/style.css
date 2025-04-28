@@ -84,7 +84,7 @@ header[role="banner"] {
   }
 
   #content {
-    padding-top: 100px; /* Adjust depending on your navbar height */
+    padding-top: 50px; /* Adjust depending on your navbar height */
   }
   
   #app {
