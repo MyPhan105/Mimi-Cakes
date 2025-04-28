@@ -125,30 +125,41 @@
     transform: scale(1.05); /* Pop-up effect */
   }
   
+
   .add-to-cart {
   position: absolute;
-  bottom: -5px;  /* Initially positioned below the photo */
+  bottom: 0px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #7dc7c1;
+  background-color: #7dc7c1; /* Default green */
   color: white;
   padding: 10px;
   border-radius: 5px;
-  opacity: 0; /* Initially invisible */
-  width: 100%; /* Make the button span the full width of the image */
-  text-align: center; /* Center the text */
-  transition: bottom 0.4s ease, opacity 0.4s ease; /* Animation for sliding up */
-  z-index: 10; /* Ensure it's above other elements */
+  opacity: 0;
+  width: 97%;
+  text-align: center;
+  transition: all 0.4s ease; /* Animate everything smoothly */
+  z-index: 10;
   pointer-events: none;
-  cursor: default; /* Prevent interaction when invisible */
+  cursor: default;
+  border: none;
 }
-  
+
+/* When you hover the photo */
 .photo:hover .add-to-cart {
-  bottom: 10px;  /* Slide up to just above the photo */
-  opacity: 1;    /* Make visible */
+  bottom: 0;
+  opacity: 1;
   pointer-events: auto;
-  cursor: pointer; /* Enable interaction when visible */
+  cursor: pointer;
+  background-color: #7dc7c1; /* Button stays green when hovering the photo */
+  color: white;
+  transform: translateX(-50%) scale(1.08);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  border: none;
 }
+
+
+
   
   .nav-button {
     background-color: rgba(0, 0, 0, 0.5);
