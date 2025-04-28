@@ -1,5 +1,5 @@
 /* Importing the font for the logo */
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
 /* Style for header banner */
 header[role="banner"] {
@@ -11,7 +11,7 @@ header[role="banner"] {
 #logo-main {
   font-size: 6rem;
   color: #eae2b0;
-  font-family: 'Caveat', cursive;
+  font-family: 'Great Vibes', cursive;
   margin: 0;
 }
   

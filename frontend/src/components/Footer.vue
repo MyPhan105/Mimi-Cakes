@@ -3,16 +3,22 @@
       <div class="footer-content">
 
         <div class="social-links">
-            <a href="#" class="social-icon">
-                <i class="fab fa-facebook-f"></i> Facebook
-            </a>
-            <a href="#" class="social-icon">
-                <i class="fab fa-instagram"></i> Instagram
-            </a>
-            <a href="#" class="social-icon">
-                <i class="fab fa-tiktok"></i> Tiktok
-            </a>
-        </div>
+    <!-- Facebook Button -->
+    <a href="https://www.facebook.com/profile.php?id=61555299763218" target="_blank" class="social-icon">
+        <i class="fab fa-facebook-f"></i> Facebook
+    </a>
+
+    <!-- Instagram Button -->
+    <a href="https://www.instagram.com/mimicakesbakery.yum/?fbclid=IwY2xjawJ8s8BleHRuA2FlbQIxMABicmlkETFsZGZ1Z3hKNmIwNFNidjZzAR4kBSt5Yt1HAP4EuEBkF9SzQNJP9D-tMkEbYQSq5y7HBvZlCQEwITGUKpvMzA_aem_OxRXRxOQk9WWV3SgsreINg#" target="_blank" class="social-icon">
+        <i class="fab fa-instagram"></i> Instagram
+    </a>
+
+    <!-- TikTok Button -->
+    <a href="https://www.tiktok.com/@yourusername" target="_blank" class="social-icon">
+        <i class="fab fa-tiktok"></i> Tiktok
+    </a>
+</div>
+
 
 
         <p class="copyright">&copy; 2025 Mimi Cakes. All rights reserved.</p>
