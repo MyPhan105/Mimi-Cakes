@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue' 
 import About from '../views/About.vue'
-import Order from '../views/Order.vue'; // Adjust the path if necessary
+import Order from '../views/Order.vue'
+import Blog from '../views/Blog.vue' ; // Adjust the path if necessary
 
 const routes = [
   {
@@ -17,10 +18,17 @@ const routes = [
   },
 
   {
-    path: '/About', 
+    path: '/about', 
     name: 'About',
     component: About, 
   },
+
+  {
+    path: '/blog', 
+    name: 'Blog',
+    component: Blog, 
+  },
+
 ]
 
 const router = createRouter({

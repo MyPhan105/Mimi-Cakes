@@ -12,8 +12,8 @@
             </li>
             <li class="nav-item"><router-link to="/order" class="nav-link">Order</router-link></li> <!-- "Order" button with router-link -->
             <li class="nav-item"><router-link to="/about" class="nav-link">About</router-link></li>
-            <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+            <li class="nav-item"><router-link to="/blog" class="nav-link">Blog</router-link></li>
+            <li class="nav-item"><router-link to="/contact" class="nav-link">Contact</router-link></li>
           </ul>
         </div>
       </div>
