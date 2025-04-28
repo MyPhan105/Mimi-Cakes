@@ -1,15 +1,19 @@
+/* Importing the font for the logo */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
+
 /* Style for header banner */
 header[role="banner"] {
     text-align: center;
     padding: 20px 0 10px;
   }
   
-  #logo-main {
-    font-size: 2.5rem;
-    color: #ffffff; /* Logo text color */
-    font-family: 'Caveat', cursive; /* Cute handwritten font */
-
-  }
+/* Add styling for the logo text */
+#logo-main {
+  font-size: 6rem;
+  color: #eae2b0;
+  font-family: 'Caveat', cursive;
+  margin: 0;
+}
   
   /* Style for navbar */
   #navbar-primary {
@@ -70,9 +74,22 @@ header[role="banner"] {
   /* Body background and padding */
   body {
     background-color: #353434; /* Dark background color */
-    padding-top: 20px; /* Enough room for logo + navbar */
+    padding-top: 90px; /* Enough room for logo + navbar */
     margin: 0; /* Ensure no body margin */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full height */
     color: #fff; /* Default text color */
     font-family: 'Poppins', sans-serif;
+  }
+
+  #content {
+    padding-top: 100px; /* Adjust depending on your navbar height */
+  }
+  
+  #app {
+    flex-grow: 1; /* This ensures that the content area takes the available space */
+    display: flex;
+    flex-direction: column;
   }
   
