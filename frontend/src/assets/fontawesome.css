@@ -1,0 +1,15 @@
+/* src/assets/fontawesome.css */
+
+/* First, import the original FontAwesome styles */
+@import url('@fortawesome/fontawesome-free/css/all.min.css');
+
+/* Then, override the font-face path manually */
+@font-face {
+  font-family: 'Font Awesome 6 Brands';
+  src: url('/webfonts/fa-brands-400.woff2') format('woff2'),
+       url('/webfonts/fa-brands-400.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* (Optional: if you see other missing fonts like fa-solid, you can override them too) */
