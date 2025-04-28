@@ -128,7 +128,7 @@
 
   .add-to-cart {
   position: absolute;
-  bottom: 0px;
+  bottom: -5px;
   left: 50%;
   transform: translateX(-50%);
   background-color: #7dc7c1; /* Default green */
@@ -145,15 +145,15 @@
   border: none;
 }
 
-/* When you hover the photo */
+/* When hover the photo */
 .photo:hover .add-to-cart {
-  bottom: 0;
+  bottom: -8px;
   opacity: 1;
   pointer-events: auto;
   cursor: pointer;
   background-color: #7dc7c1; /* Button stays green when hovering the photo */
   color: white;
-  transform: translateX(-50%) scale(1.08);
+  transform: translateX(-50%) translateY(-10px) scale(1.08); /* Move button up by 10px and scale it */
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
   border: none;
 }
