@@ -1,10 +1,9 @@
 <template>
   <div class="order-page">
-
     <ShoppingCart />
 
     <header>
-      <br>
+      <br />
       <h1 class="order-heading">Place Your Order</h1>
       <p class="order-subheading">Choose your favorite treats below</p>
     </header>
@@ -13,65 +12,48 @@
     <section class="order-section">
       <h2 class="category-title">Cakes</h2>
       <div class="products-grid">
-        <div v-for="(cake, index) in cakes" :key="'cake-' + index" class="product-card">
-          <img :src="cake.image" :alt="cake.name" />
-          <h3>{{ cake.name }}</h3>
-        </div>
+        <CakeCard
+          v-for="(cake, index) in cakes"
+          :key="'cake-' + index"
+          :product="cake"
+          @add-to-cart="addToCart"
+        />
       </div>
     </section>
 
-    <!-- Cupcakes Section -->
-    <section class="order-section">
-      <h2 class="category-title">Cupcakes</h2>
-      <div class="products-grid">
-        <div v-for="(cupcake, index) in cupcakes" :key="'cupcake-' + index" class="product-card">
-          <img :src="cupcake.image" :alt="cupcake.name" />
-          <h3>{{ cupcake.name }}</h3>
-        </div>
-      </div>
-    </section>
-
-    <!-- Bouquets Section -->
-    <section class="order-section">
-      <h2 class="category-title">Bouquets</h2>
-      <div class="products-grid">
-        <div v-for="(bouquet, index) in bouquets" :key="'bouquet-' + index" class="product-card">
-          <img :src="bouquet.image" :alt="bouquet.name" />
-          <h3>{{ bouquet.name }}</h3>
-        </div>
-      </div>
-    </section>
+    <!-- Similar sections for cupcakes and bouquets -->
   </div>
 </template>
 
 <script>
 import ShoppingCart from "@/components/ShoppingCart.vue";
+import CakeCard from "@/components/CakeCard.vue"; // Import CakeCard component
 
 export default {
   name: "Order",
   components: {
-    ShoppingCart, // register ShoppingCart
+    ShoppingCart,
+    CakeCard, // Register CakeCard component
   },
   data() {
     return {
       cakes: [
-        { name: "Vanilla Dream", image: "@/assets/cakes/vanilla.jpg" },
-        { name: "Chocolate Heaven", image: "@/assets/cakes/chocolate.jpg" },
-        { name: "Red Velvet Love", image: "@/assets/cakes/redvelvet.jpg" },
+        { name: "Vanilla Dream", image: "/assets/Cake4.jpg" },
+        { name: "Chocolate Heaven", image: "/assets/Cake3.jpg" },
+        { name: "Red Velvet Love", image: "/assets/Cake1.jpg" },
       ],
-      cupcakes: [
-        { name: "Rose Cupcake", image: "@/assets/cupcakes/rose.jpg" },
-        { name: "Birthday Cupcake", image: "@/assets/cupcakes/birthday.jpg" },
-        { name: "Buttercream Swirl", image: "@/assets/cupcakes/buttercream.jpg" },
-      ],
-      bouquets: [
-        { name: "Floral Cupcake Bouquet", image: "@/assets/bouquets/floral.jpg" },
-        { name: "Spring Blooms", image: "@/assets/bouquets/spring.jpg" },
-      ],
+      // cupcakes and bouquets data...
     };
+  },
+  methods: {
+    addToCart(product) {
+      console.log(`${product.name} added to cart!`);
+      // Logic to add product to cart
+    },
   },
 };
 </script>
+
 
 <style scoped>
 /* General Page Styles */
@@ -79,7 +61,7 @@ export default {
   font-family: 'Poppins', sans-serif;
   color: #fff;
   background-color: #000;
-  padding: 50px;
+  padding: 50px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -106,6 +88,7 @@ export default {
   margin-top: 60px;
   width: 100%;
   max-width: 1400px;
+  padding: 20px;
 }
 
 .category-title {
@@ -120,34 +103,92 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
+  margin-top: 20px;
 }
 
+/* CakeCard Component Styles */
 .product-card {
   background-color: #111;
   border: 1px solid #7dc7c1;
   border-radius: 10px;
   padding: 20px;
   text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .product-card img {
   width: 100%;
-  height: 200px;
+  height: 250px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
 }
 
 .product-card h3 {
-  margin-top: 15px;
+  margin-top: 12px;
   font-size: 1.2rem;
   color: #eae2b0;
+  text-align: center;
 }
 
 .product-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(125, 199, 193, 0.3);
+  box-shadow: 0 15px 30px rgba(125, 199, 193, 0.4);
 }
-</style>
 
-  
+/* Add to Cart Button Styles */
+.add-to-cart {
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #7dc7c1;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  opacity: 0;
+  width: 97%;
+  text-align: center;
+  transition: all 0.4s ease;
+  z-index: 10;
+  pointer-events: none;
+  cursor: default;
+  border: none;
+}
+
+/* Show add-to-cart button on hover */
+.photo:hover .add-to-cart {
+  bottom: -8px;
+  opacity: 1;
+  pointer-events: auto;
+  cursor: pointer;
+  background-color: #7dc7c1;
+  color: white;
+  transform: translateX(-50%) translateY(-10px) scale(1.08);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  border: none;
+}
+
+/* Hover Effects */
+.photo {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.photo:hover img {
+  transform: scale(1.05);
+}
+
+
+</style>

@@ -5,7 +5,7 @@
       @click="toggleCart"
     >
       <div class="cart-content">
-        <span v-if="!isExpanded">🛒</span>
+        <span v-if="!isExpanded" class="basket-text">Your Cart</span>
         <div v-else>
           <h2>Your Cart</h2>
           <ul>
@@ -24,7 +24,7 @@
     data() {
       return {
         isExpanded: false,
-        cartItems: ["Vanilla Cake", "Rose Cupcake"], // Example items
+        cartItems: ["Vanilla Cake", "Rose Cupcake"], 
       };
     },
     methods: {
@@ -41,7 +41,7 @@
     top: 20%;
     left: 0;
     height: 200px;
-    width: 50px;
+    width: 80px;
     background-color: #7dc7c1;
     color: white;
     border-top-right-radius: 10px;
@@ -61,6 +61,15 @@
   .cart-content {
     padding: 10px;
     text-align: left;
+  }
+  
+  .basket-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-weight: bold;
+    font-size: 1rem;
+    color: white;
+    transform: rotate(180deg);
   }
   
   .cart-content h2 {
