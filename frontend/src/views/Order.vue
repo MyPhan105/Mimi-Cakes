@@ -19,6 +19,7 @@
           @add-to-cart="addToCart"
         />
       </div>
+      <ShoppingCart :cart="cart" /> <!-- Pass the cart here -->
     </section>
 
     <!-- Similar sections for cupcakes and bouquets -->
@@ -38,17 +39,18 @@ export default {
   data() {
     return {
       cakes: [
-        { name: "Vanilla Dream", image: "/assets/Cake4.jpg" },
-        { name: "Chocolate Heaven", image: "/assets/Cake3.jpg" },
-        { name: "Red Velvet Love", image: "/assets/Cake1.jpg" },
+        { name: "Lavender Dream", image: "/assets/Cake4.jpg" },
+        { name: "Succulent Island", image: "/assets/Cake3.jpg" },
+        { name: "Dreammy Fairy", image: "/assets/Cake1.jpg" },
       ],
+      cart: [],
       // cupcakes and bouquets data...
     };
   },
   methods: {
     addToCart(product) {
       console.log(`${product.name} added to cart!`);
-      // Logic to add product to cart
+      this.cart.push(product);// Logic to add product to cart
     },
   },
 };

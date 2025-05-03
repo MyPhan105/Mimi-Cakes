@@ -9,33 +9,41 @@
         <div v-else>
           <h2>Your Cart</h2>
           <ul>
-            <li v-for="(item, index) in cartItems" :key="index">
-              {{ item }}
-            </li>
-          </ul>
-        </div>
+          <!-- Iterate over the passed cart prop instead of cartItems -->
+          <li v-for="(item, index) in cart" :key="index">
+            {{ item.name }} <!-- Display product name (or any other property) -->
+          </li>
+        </ul>
       </div>
     </div>
-  </template>
+  </div>
+</template>
   
-  <script>
+
+<script>
   export default {
     name: "ShoppingCart",
-    data() {
-      return {
-        isExpanded: false,
-        cartItems: ["Vanilla Cake", "Rose Cupcake"], 
-      };
+  props: {
+    cart: {
+      type: Array,
+      required: true,
     },
+  },
+  data() {
+    return {
+      isExpanded: false,
+    };
+  },
     methods: {
       toggleCart() {
         this.isExpanded = !this.isExpanded;
       },
     },
   };
-  </script>
+</script>
   
-  <style scoped>
+
+<style scoped>
   .shopping-cart {
     position: fixed;
     top: 20%;
@@ -86,5 +94,5 @@
   .cart-content li {
     margin-bottom: 8px;
   }
-  </style>
+</style>
   

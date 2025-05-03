@@ -36,7 +36,7 @@
   }
   
   .photo {
-    width: 100%;
+    width: 80%;
     aspect-ratio: 3/ 4;
     position: relative;
     display: flex;
