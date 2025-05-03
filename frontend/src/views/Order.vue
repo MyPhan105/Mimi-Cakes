@@ -106,7 +106,7 @@ export default {
   margin-top: 20px;
 }
 
-/* CakeCard Component Styles */
+/* CakeCard Component Styles 
 .product-card {
   background-color: #111;
   border: 1px solid #7dc7c1;
@@ -136,7 +136,7 @@ export default {
   box-shadow: 0 15px 30px rgba(125, 199, 193, 0.4);
 }
 
-/* Add to Cart Button Styles */
+/* Add to Cart Button Styles 
 .add-to-cart {
   position: absolute;
   bottom: -5px;
@@ -156,7 +156,7 @@ export default {
   border: none;
 }
 
-/* Show add-to-cart button on hover */
+/* Show add-to-cart button on hover 
 .photo:hover .add-to-cart {
   bottom: -8px;
   opacity: 1;

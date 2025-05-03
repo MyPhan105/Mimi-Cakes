@@ -30,18 +30,24 @@
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   .photo {
     width: 100%;
+    aspect-ratio: 3/ 4;
     position: relative;
     display: flex;
     justify-content: center;
+    align-items: center;
+    overflow: hidden;
   }
   
   .photo img {
     width: 100%;
-    height: 250px;
+    height: 100%;
     object-fit: cover;
     border-radius: 10px;
     transition: transform 0.3s ease;
@@ -53,35 +59,35 @@
   }
   
   .add-to-cart {
-    position: absolute;
-    bottom: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #7dc7c1;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    opacity: 0;
-    width: 97%;
-    text-align: center;
-    transition: all 0.4s ease;
-    z-index: 10;
-    pointer-events: none;
-    cursor: default;
-    border: none;
-  }
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #7dc7c1; /* Default green */
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  opacity: 0;
+  width: 97%;
+  text-align: center;
+  transition: all 0.4s ease; /* Animate everything smoothly */
+  z-index: 10;
+  pointer-events: none;
+  cursor: default;
+  border: none;
+}
   
-  .photo:hover .add-to-cart {
-    bottom: -8px;
-    opacity: 1;
-    pointer-events: auto;
-    cursor: pointer;
-    background-color: #7dc7c1;
-    color: white;
-    transform: translateX(-50%) translateY(-10px) scale(1.08);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-    border: none;
-  }
+.photo:hover .add-to-cart {
+  bottom: -8px;
+  opacity: 1;
+  pointer-events: auto;
+  cursor: pointer;
+  background-color: #7dc7c1; /* Button stays green when hovering the photo */
+  color: white;
+  transform: translateX(-50%) translateY(-10px) scale(1.08); /* Move button up by 10px and scale it */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  border: none;
+}
   
   .product-card h3 {
     margin-top: 12px;
@@ -92,7 +98,6 @@
   
   .product-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(125, 199, 193, 0.4);
   }
   </style>
   
