@@ -10,10 +10,20 @@
           <h2>Your Cart</h2>
           <ul>
           <!-- Iterate over the passed cart prop instead of cartItems -->
-          <li v-for="(item, index) in cart" :key="index">
-            {{ item.name }} <!-- Display product name (or any other property) -->
+          <li v-for="(item, index) in cart" :key="index" class="cart-item">
+            <div class="item-details">
+              <span class="item-name">{{ item.name }} - {{ item.size }}</span>
+              <span class="item-price">${{ item.price }}</span>
+              <span class="item-qty">x{{ item.quantity || 1 }}</span>
+              <span class="item-total">${{ item.price * (item.quantity || 1) }}</span>
+            </div>
+            <button class="delete-btn" @click.stop="removeItem(index)">🗑️</button>
           </li>
         </ul>
+
+        <div class="cart-total">
+          <strong>Total:</strong> ${{ totalPrice }}
+        </div>
       </div>
     </div>
   </div>
@@ -34,12 +44,24 @@
       isExpanded: false,
     };
   },
-    methods: {
-      toggleCart() {
-        this.isExpanded = !this.isExpanded;
-      },
+  computed: {
+    totalPrice() {
+      return this.cart.reduce(
+        (sum, item) => sum + item.price * (item.quantity || 1),
+        0
+      );
     },
-  };
+  },
+  methods: {
+    toggleCart() {
+      this.isExpanded = !this.isExpanded;
+    },
+    removeItem(index) {
+      this.cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(this.cart));
+    },
+  },
+};
 </script>
   
 
@@ -92,7 +114,43 @@
   }
   
   .cart-content li {
-    margin-bottom: 8px;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  background-color: #222;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.item-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-name,
+.item-price,
+.item-qty,
+.item-total {
+  color: #eae2b0;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #ff6b6b;
+}
+
+.delete-btn:hover {
+  color: #ff4b4b;
+}
+
+.cart-total {
+  margin-top: 15px;
+  text-align: right;
+  color: #eae2b0;
+}
 </style>
   
