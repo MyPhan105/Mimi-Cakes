@@ -40,9 +40,32 @@ export default {
     return {
       cart: JSON.parse(localStorage.getItem('cart')) || [],
       cakes: [
-        { name: "Lavender Dream", image: "/assets/Cake4.jpg" },
-        { name: "Succulent Island", image: "/assets/Cake3.jpg" },
-        { name: "Dreammy Fairy", image: "/assets/Cake1.jpg" },
+        { name: "Lavender Dream", 
+          image: "/assets/Cake4.jpg",
+          sizes: [
+          { label: "5 inch", price: 90 },
+          { label: "6 inch", price: 120 },
+          { label: "8 inch", price: 175 },
+          ],
+         },
+
+        { name: "Succulent Island",
+          image: "/assets/Cake3.jpg",
+          sizes: [
+          { label: "5 inch", price: 90 },
+          { label: "6 inch", price: 120 },
+          { label: "8 inch", price: 175 },
+          ],
+        },
+
+        { name: "Dreammy Fairy",
+          image: "/assets/Cake1.jpg",
+          sizes: [
+          { label: "5 inch", price: 90 },
+          { label: "6 inch", price: 120 },
+          { label: "8 inch", price: 175 },
+          ],
+        },
       ],
       // cupcakes and bouquets data...
     };

@@ -1,29 +1,56 @@
-<!-- CakeCard.vue -->
 <template>
-    <div class="product-card">
-      <div class="photo">
-        <img :src="product.image" :alt="product.name" />
-        <div class="add-to-cart" @click="addToCart(product)">Add to Cart</div>
-      </div>
-      <h3>{{ product.name }}</h3>
+  <div class="product-card">
+    <div class="photo">
+      <img :src="product.image" :alt="product.name" />
+      <div class="add-to-cart" @click="showModal = true">Add to Cart</div>
     </div>
-  </template>
+    <h3>{{ product.name }}</h3>
+
+    <!-- Size selection modal -->
+    <div v-if="showModal" class="modal">
+      <div class="modal-content">
+        <h4>Select Size for {{ product.name }}</h4>
+        <ul>
+          <li v-for="(size, index) in product.sizes" :key="index">
+            <button @click="selectSize(size)">
+              {{ size.label }} - ${{ size.price.toFixed(2) }}
+            </button>
+          </li>
+        </ul>
+        <button @click="showModal = false">Cancel</button>
+      </div>
+    </div>
+  </div>
+</template>
+
   
-  <script>
-  export default {
-    name: 'CakeCard',
-    props: {
-      product: Object, // Pass the product object from the parent component
+<script>
+export default {
+  name: "CakeCard",
+  props: {
+    product: Object,
+  },
+  data() {
+    return {
+      showModal: false,
+    };
+  },
+  methods: {
+    selectSize(size) {
+      this.showModal = false;
+      this.$emit("add-to-cart", {
+        name: this.product.name,
+        image: this.product.image,
+        size: size.label,
+        price: size.price,
+      });
     },
-    methods: {
-      addToCart(product) {
-        this.$emit('add-to-cart', product); // Emit event to the parent component
-      },
-    },
-  };
-  </script>
+  },
+};
+
+</script>
   
-  <style scoped>
+<style scoped>
   .product-card {
     background-color: transparent;
     position: relative;
@@ -99,5 +126,39 @@
   .product-card:hover {
     transform: translateY(-5px);
   }
-  </style>
+  .modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #222;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.modal-content h4 {
+  color: #eae2b0;
+}
+
+.modal-content button {
+  margin: 8px;
+  padding: 10px 15px;
+  background-color: #7dc7c1;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+</style>
   
