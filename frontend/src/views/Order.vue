@@ -38,12 +38,12 @@ export default {
   },
   data() {
     return {
+      cart: JSON.parse(localStorage.getItem('cart')) || [],
       cakes: [
         { name: "Lavender Dream", image: "/assets/Cake4.jpg" },
         { name: "Succulent Island", image: "/assets/Cake3.jpg" },
         { name: "Dreammy Fairy", image: "/assets/Cake1.jpg" },
       ],
-      cart: [],
       // cupcakes and bouquets data...
     };
   },
@@ -51,6 +51,7 @@ export default {
     addToCart(product) {
       console.log(`${product.name} added to cart!`);
       this.cart.push(product);// Logic to add product to cart
+      localStorage.setItem('cart', JSON.stringify(this.cart)); // persist cart
     },
   },
 };
