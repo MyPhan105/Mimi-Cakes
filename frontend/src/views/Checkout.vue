@@ -37,6 +37,23 @@
   
       <hr class="divider" />
   
+      <!-- Card Info Section -->
+      <div class="card-info-section">
+        <h3>Enter Your Payment Information</h3>
+        <label for="card-number">Card Number:</label>
+        <input type="text" id="card-number" v-model="cardNumber" placeholder="1234 5678 9876 5432" />
+  
+        <label for="expiry-date">Expiration Date:</label>
+        <input type="month" id="expiry-date" v-model="expiryDate" />
+  
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" v-model="cvv" placeholder="123" />
+  
+        <div v-if="paymentError" class="payment-error">{{ paymentError }}</div>
+      </div>
+  
+      <hr class="divider" />
+  
       <div class="summary-section">
         <div class="summary-line">
           <strong>Subtotal:</strong>
@@ -52,7 +69,7 @@
         </div>
       </div>
   
-      <button class="confirm-button">Confirm Order</button>
+      <button class="confirm-button" @click="confirmOrder">Confirm Order</button>
     </div>
   </template>
   
@@ -72,6 +89,10 @@
         pickupTime: '',
         deliveryDate: '',
         deliveryTime: '',
+        cardNumber: '',
+        expiryDate: '',
+        cvv: '',
+        paymentError: '',
       };
     },
     computed: {
@@ -86,7 +107,58 @@
         return this.subtotal * 0.0825;
       },
       total() {
-        return this.subtotal + this.tax;
+        // Add $20 for delivery fee if it's a delivery
+        const deliveryFee = this.deliveryOption === 'delivery' ? 20 : 0;
+        return this.subtotal + this.tax + deliveryFee;
+      },
+    },
+    methods: {
+      confirmOrder() {
+        // Validate input
+        if (this.deliveryOption === 'pickup') {
+          if (!this.pickupDate || !this.pickupTime) {
+            alert('Please select pickup date and time.');
+            return;
+          }
+        } else if (this.deliveryOption === 'delivery') {
+          if (!this.deliveryDate || !this.deliveryTime) {
+            alert('Please select delivery date and time.');
+            return;
+          }
+        }
+  
+        // Validate payment info
+        if (!this.cardNumber || !this.expiryDate || !this.cvv) {
+          this.paymentError = 'Please enter your card details.';
+          return;
+        }
+  
+        // Here, you would typically send the payment info to a secure payment gateway (e.g., Stripe, PayPal)
+        // For this example, we'll just proceed with the order
+  
+        // Prepare the order details
+        const orderDetails = {
+          cart: this.cart,
+          deliveryOption: this.deliveryOption,
+          date: this.deliveryOption === 'pickup' ? this.pickupDate : this.deliveryDate,
+          time: this.deliveryOption === 'pickup' ? this.pickupTime : this.deliveryTime,
+          total: this.total,
+          payment: {
+            cardNumber: this.cardNumber,
+            expiryDate: this.expiryDate,
+            cvv: this.cvv,
+          },
+        };
+  
+        // Store the order in localStorage (for demonstration)
+        localStorage.setItem('orderDetails', JSON.stringify(orderDetails));
+  
+        // Clear the cart after confirming the order
+        localStorage.removeItem('cart');
+  
+        // Optional: Redirect to confirmation page or show success message
+        alert('Order confirmed successfully!');
+        this.$router.push('/order-confirmation'); // Redirect to confirmation page
       },
     },
   };
@@ -134,9 +206,27 @@
     font-size: 1rem;
   }
   
-  .pickup-section label,
-  .delivery-section label {
+  .card-info-section {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1rem;
+  }
+  
+  .card-info-section label {
     font-weight: 600;
+  }
+  
+  .card-info-section input {
+    padding: 8px;
+    font-size: 1rem;
+  }
+  
+  .payment-error {
+    color: red;
+    margin-top: 10px;
+    font-size: 1rem;
   }
   
   .summary-section {
