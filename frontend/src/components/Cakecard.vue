@@ -160,5 +160,17 @@ export default {
   cursor: pointer;
 }
 
+.modal-content ul {
+  list-style-type: none; /* Remove the bullets */
+  padding: 0;
+  margin: 0;
+}
+
+.modal-content li {
+  display: block;
+  margin-bottom: 10px; /* Space between list items */
+}
+
+
 </style>
   

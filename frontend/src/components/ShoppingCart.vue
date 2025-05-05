@@ -32,6 +32,11 @@
   <span class="item-count">{{ totalItems }} item<span v-if="totalItems > 1">s</span></span>
 </div>
 
+        <!-- Checkout Button -->
+        <router-link to="/checkout" class="checkout-button-wrapper" @click.stop>
+          <button class="checkout-button">Checkout</button>
+        </router-link>
+
       </div>
     </div>
   </div>
@@ -71,6 +76,9 @@ export default {
       this.cart.splice(index, 1);
       localStorage.setItem("cart", JSON.stringify(this.cart));
     },
+    goToCheckout() {
+    alert("Redirecting to checkout..."); // Replace with actual logic or route
+  },
   },
 };
 </script>
@@ -113,7 +121,6 @@ export default {
   color: white;
   transform: rotate(180deg);
   margin-top: 32px; 
-
   padding: 6px 0; /* ensures vertical padding only */
   text-align: center;
 }
@@ -198,5 +205,28 @@ export default {
   justify-content: space-between;
   gap: 10px;
 }
+
+.checkout-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  text-decoration: none;
+}
+
+.checkout-button {
+  background-color: #ffffff;
+  color: #7dc7c1;
+  padding: 10px 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.checkout-button:hover {
+  background-color: #f0f0f0;
+}
+
 
 </style>
