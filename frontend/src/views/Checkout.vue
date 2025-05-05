@@ -17,12 +17,22 @@
         </label>
       </div>
   
-      <div v-if="deliveryOption === 'pickup' || deliveryOption === 'delivery'" class="pickup-section">
-        <label for="pickup-date">Date:</label>
+      <!-- Pickup Section -->
+      <div v-if="deliveryOption === 'pickup'" class="pickup-section">
+        <label for="pickup-date">Pickup Date:</label>
         <input type="date" id="pickup-date" v-model="pickupDate" />
   
-        <label for="pickup-time">Time:</label>
+        <label for="pickup-time">Pickup Time:</label>
         <input type="time" id="pickup-time" v-model="pickupTime" />
+      </div>
+  
+      <!-- Delivery Section -->
+      <div v-if="deliveryOption === 'delivery'" class="delivery-section">
+        <label for="delivery-date">Delivery Date:</label>
+        <input type="date" id="delivery-date" v-model="deliveryDate" />
+  
+        <label for="delivery-time">Delivery Time:</label>
+        <input type="time" id="delivery-time" v-model="deliveryTime" />
       </div>
   
       <hr class="divider" />
@@ -33,7 +43,7 @@
           <span>${{ subtotal.toFixed(2) }}</span>
         </div>
         <div class="summary-line">
-          <strong>Tax:</strong>
+          <strong>Tax (8.25%):</strong>
           <span>${{ tax.toFixed(2) }}</span>
         </div>
         <div class="summary-line total">
@@ -57,9 +67,11 @@
     data() {
       return {
         cart: JSON.parse(localStorage.getItem('cart')) || [],
-        deliveryOption: 'pickup',
+        deliveryOption: 'pickup', // Default option
         pickupDate: '',
         pickupTime: '',
+        deliveryDate: '',
+        deliveryTime: '',
       };
     },
     computed: {
@@ -113,7 +125,8 @@
     font-size: 1.2rem;
   }
   
-  .pickup-section {
+  .pickup-section,
+  .delivery-section {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
@@ -121,7 +134,8 @@
     font-size: 1rem;
   }
   
-  .pickup-section label {
+  .pickup-section label,
+  .delivery-section label {
     font-weight: 600;
   }
   
