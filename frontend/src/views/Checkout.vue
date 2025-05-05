@@ -156,9 +156,8 @@
         // Clear the cart after confirming the order
         localStorage.removeItem('cart');
   
-        // Optional: Redirect to confirmation page or show success message
-        alert('Order confirmed successfully!');
-        this.$router.push('/order-confirmation'); // Redirect to confirmation page
+        // Redirect to confirmation page
+        this.$router.push({ name: 'ThankYou' }); // Navigate to Thank You page
       },
     },
   };
