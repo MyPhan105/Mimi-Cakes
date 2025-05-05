@@ -4,32 +4,45 @@
   
       <header>
         <br />
-        <h1 class="checkout-heading">Review & Confirm</h1>
-        <p class="checkout-subheading">Double-check your order before proceeding to payment</p>
+        <h1 class="checkout-heading">Checkout</h1>
+        <p class="checkout-subheading">Review your order and choose your delivery option</p>
       </header>
   
-      <section class="checkout-summary">
-        <h2 class="summary-title">Order Summary</h2>
-        <ul class="checkout-list">
-          <li v-for="(item, index) in cart" :key="index" class="checkout-item">
-            <div>
-              <span class="product-name">{{ item.name }}</span> -
-              <span class="product-size">{{ item.size }}</span>
-            </div>
-            <div class="product-line">
-              <span>${{ Number(item.price).toFixed(2) }} x {{ item.quantity }} = </span>
-              <span class="product-total">${{ (Number(item.price) * Number(item.quantity || 0)).toFixed(2) }}</span>
-            </div>
-          </li>
-        </ul>
+      <div class="options-section">
+        <label>
+          <input type="radio" value="pickup" v-model="deliveryOption" /> Pickup
+        </label>
+        <label>
+          <input type="radio" value="delivery" v-model="deliveryOption" /> Delivery
+        </label>
+      </div>
   
-        <div class="total-line">
-          <strong>Total:</strong>
-          <span class="total-price">${{ totalPrice.toFixed(2) }}</span>
+      <div v-if="deliveryOption === 'pickup' || deliveryOption === 'delivery'" class="pickup-section">
+        <label for="pickup-date">Date:</label>
+        <input type="date" id="pickup-date" v-model="pickupDate" />
+  
+        <label for="pickup-time">Time:</label>
+        <input type="time" id="pickup-time" v-model="pickupTime" />
+      </div>
+  
+      <hr class="divider" />
+  
+      <div class="summary-section">
+        <div class="summary-line">
+          <strong>Subtotal:</strong>
+          <span>${{ subtotal.toFixed(2) }}</span>
         </div>
+        <div class="summary-line">
+          <strong>Tax:</strong>
+          <span>${{ tax.toFixed(2) }}</span>
+        </div>
+        <div class="summary-line total">
+          <strong>Total:</strong>
+          <span>${{ total.toFixed(2) }}</span>
+        </div>
+      </div>
   
-        <button class="confirm-button">Confirm Order</button>
-      </section>
+      <button class="confirm-button">Confirm Order</button>
     </div>
   </template>
   
@@ -39,22 +52,31 @@
   export default {
     name: 'Checkout',
     components: {
-      ShoppingCart
+      ShoppingCart,
     },
     data() {
       return {
-        cart: JSON.parse(localStorage.getItem('cart')) || []
+        cart: JSON.parse(localStorage.getItem('cart')) || [],
+        deliveryOption: 'pickup',
+        pickupDate: '',
+        pickupTime: '',
       };
     },
     computed: {
-      totalPrice() {
+      subtotal() {
         return this.cart.reduce((sum, item) => {
           const price = Number(item.price);
           const quantity = Number(item.quantity || 0);
           return sum + price * quantity;
         }, 0);
-      }
-    }
+      },
+      tax() {
+        return this.subtotal * 0.0825;
+      },
+      total() {
+        return this.subtotal + this.tax;
+      },
+    },
   };
   </script>
   
@@ -84,65 +106,59 @@
     font-style: italic;
   }
   
-  .checkout-summary {
-    margin-top: 40px;
-    width: 100%;
-    max-width: 1000px;
-    padding: 20px;
-  }
-  
-  .summary-title {
-    font-size: 2rem;
-    color: #7dc7c1;
-    margin-bottom: 20px;
-  }
-  
-  .checkout-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .checkout-item {
-    margin-bottom: 16px;
-    border-bottom: 1px solid #7dc7c1;
-    padding-bottom: 8px;
-  }
-  
-  .product-line {
+  .options-section {
+    margin-top: 20px;
     display: flex;
-    justify-content: space-between;
+    gap: 20px;
+    font-size: 1.2rem;
+  }
+  
+  .pickup-section {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
     gap: 10px;
     font-size: 1rem;
   }
   
-  .product-total {
-    font-weight: bold;
+  .pickup-section label {
+    font-weight: 600;
   }
   
-  .total-line {
+  .summary-section {
+    margin-top: 30px;
+    width: 100%;
+    max-width: 400px;
+    border-top: 2px solid #7dc7c1;
+    padding-top: 20px;
+  }
+  
+  .summary-line {
     display: flex;
     justify-content: space-between;
-    margin-top: 30px;
-    font-size: 1.25rem;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+  }
+  
+  .summary-line.total {
+    font-size: 1.3rem;
     font-weight: bold;
-    color: #eae2b0;
   }
   
   .confirm-button {
     margin-top: 30px;
-    padding: 10px 25px;
     background-color: #7dc7c1;
     color: #000;
+    padding: 12px 30px;
     border: none;
-    font-size: 1rem;
-    font-weight: bold;
     border-radius: 8px;
+    font-size: 1.2rem;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: background-color 0.3s ease;
   }
   
   .confirm-button:hover {
-    background-color: #5aa9a2;
+    background-color: #5da39e;
   }
   </style>
+  
