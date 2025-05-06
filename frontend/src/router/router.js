@@ -4,8 +4,8 @@ import About from '../views/About.vue'
 import Order from '../views/Order.vue'
 import Blog from '../views/Blog.vue'
 import Contact from '../views/Contact.vue' 
-import Login from '@/views/Login.vue'
-import SignUp from '@/views/SignUp.vue'
+import Login from '../views/Login.vue'
+import SignUp from '../views/Signup.vue'
 
 const routes = [
   {
@@ -59,7 +59,7 @@ const routes = [
   {
     path: '/signup',
     name: 'SignUp',
-    component: () => import('@/views/SignUp.vue'),  // Correct path to SignUp component in views
+    component: SignUp,  // Correct path to SignUp component in views
   },
 
 ]
