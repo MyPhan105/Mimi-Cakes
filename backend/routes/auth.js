@@ -53,11 +53,14 @@ router.post('/login', async (req, res) => {
   try {
     // Check if the user exists in the database
     const [user] = await pool.execute('SELECT * FROM users WHERE email = ?', [email]);
-
+    console.log("User from DB:", user);
     if (user.length === 0) {
       return res.status(400).json({ message: 'Invalid email or password!' });
     }
 
+    console.log("Entered password:", password);
+    console.log("Stored hash:", user[0].password);
+    
     // Compare password with the hash stored in the database
     const validPassword = await bcrypt.compare(password, user[0].password);
 

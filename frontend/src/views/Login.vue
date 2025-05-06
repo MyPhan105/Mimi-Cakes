@@ -17,40 +17,46 @@
   </template>
   
   <script>
+import axios from 'axios';
 export default {
   name: "Login",
   data() {
     return {
-      // Your login form data goes here, e.g., username and password
-      username: "",
+      // Your login form data goes here
+      email: "",
       password: "",
     };
   },
   methods: {
-    login() {
-      // Simulate login process (replace this with actual logic, such as API calls)
-      const token = "some-token";  // You'd get this from your API response upon successful login
+    async loginUser() {
+      try {
+        const response = await axios.post('http://localhost:3000/api/auth/login', {
+          email: this.email,
+          password: this.password,
+        });
 
-      if (token) {
-        // Store the token in localStorage (or wherever your app keeps auth data)
-        localStorage.setItem("token", token);
+        const token = response.data.token;
 
-        // Check if there's a redirect path stored
-        const redirectPath = localStorage.getItem("redirectAfterLogin");
+        if (token) {
+          localStorage.setItem("token", token);
 
-        if (redirectPath) {
-          // Redirect to the stored path (e.g., /checkout)
-          this.$router.push(redirectPath);
+          const redirectPath = localStorage.getItem("redirectAfterLogin");
 
-          // Clear the redirect path from localStorage after using it
-          localStorage.removeItem("redirectAfterLogin");
+          if (redirectPath) {
+            this.$router.push(redirectPath);
+            localStorage.removeItem("redirectAfterLogin");
+          } else {
+            this.$router.push("/");
+          }
         } else {
-          // If there's no stored redirect path, you can redirect to a default page, like the homepage
-          this.$router.push("/");
+          alert("Login failed: No token received.");
         }
-      } else {
-        // Handle login failure
-        alert("Login failed! Please try again.");
+      } catch (error) {
+        if (error.response && error.response.data) {
+          alert(error.response.data.message);
+        } else {
+          alert("An error occurred during login.");
+        }
       }
     },
   },
