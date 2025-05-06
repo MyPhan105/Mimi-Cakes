@@ -3,7 +3,9 @@ import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Order from '../views/Order.vue'
 import Blog from '../views/Blog.vue'
-import Contact from '../views/Contact.vue' ; 
+import Contact from '../views/Contact.vue' 
+import Login from '@/views/Login.vue'
+import SignUp from '@/views/SignUp.vue'
 
 const routes = [
   {
@@ -48,6 +50,18 @@ const routes = [
     component: () => import('../views/Thankyou.vue'), 
   },
 
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('../views/Login.vue'),
+  },
+  
+  {
+    path: '/signup',
+    name: 'SignUp',
+    component: () => import('@/views/SignUp.vue'),  // Correct path to SignUp component in views
+  },
+
 ]
 
 const router = createRouter({
@@ -55,4 +69,16 @@ const router = createRouter({
     routes
   });
 
-export default router
+// Navigation guard to protect checkout page
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('token') // Check if the user is logged in
+
+  if (to.path === '/checkout' && !token) {
+    localStorage.setItem('redirectAfterLogin', '/checkout') // Store the intended route
+    next('/login') // Redirect to login page if not authenticated
+  } else {
+    next() // Allow navigation to the route
+  }
+})
+
+export default router;

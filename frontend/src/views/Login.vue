@@ -1,4 +1,3 @@
-<!-- src/views/Login.vue -->
 <template>
     <div class="login-container">
       <h1>Login</h1>
@@ -13,42 +12,58 @@
         </div>
         <button type="submit">Login</button>
       </form>
+      <p>Don't have an account? <router-link to="/signup">Sign up here</router-link></p>
     </div>
   </template>
   
   <script>
-  import axios from 'axios';
-  import { useRouter } from 'vue-router';
-  
-  export default {
-    data() {
-      return {
-        email: '',
-        password: '',
-      };
-    },
-    methods: {
-      async loginUser() {
-        try {
-          const response = await axios.post('http://localhost:3000/api/auth/login', {
-            email: this.email,
-            password: this.password,
-          });
-          localStorage.setItem('token', response.data.token); // Save the token
-          this.$router.push('/dashboard'); // Redirect to another page (you can change this as needed)
-        } catch (error) {
-          console.error(error);
-          alert('Login failed! Please check your credentials.');
+export default {
+  name: "Login",
+  data() {
+    return {
+      // Your login form data goes here, e.g., username and password
+      username: "",
+      password: "",
+    };
+  },
+  methods: {
+    login() {
+      // Simulate login process (replace this with actual logic, such as API calls)
+      const token = "some-token";  // You'd get this from your API response upon successful login
+
+      if (token) {
+        // Store the token in localStorage (or wherever your app keeps auth data)
+        localStorage.setItem("token", token);
+
+        // Check if there's a redirect path stored
+        const redirectPath = localStorage.getItem("redirectAfterLogin");
+
+        if (redirectPath) {
+          // Redirect to the stored path (e.g., /checkout)
+          this.$router.push(redirectPath);
+
+          // Clear the redirect path from localStorage after using it
+          localStorage.removeItem("redirectAfterLogin");
+        } else {
+          // If there's no stored redirect path, you can redirect to a default page, like the homepage
+          this.$router.push("/");
         }
-      },
+      } else {
+        // Handle login failure
+        alert("Login failed! Please try again.");
+      }
     },
-  };
-  </script>
+  },
+};
+</script>
+
+  
   
   <style scoped>
   .login-container {
     max-width: 400px;
     margin: 0 auto;
+    margin-top: 90px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -57,6 +72,7 @@
   
   h1 {
     text-align: center;
+    color: #7dc7c1; 
   }
   
   .input-group {
@@ -82,6 +98,11 @@
   
   button:hover {
     background-color: #5da39e;
+  }
+  
+  p {
+    text-align: center;
+    margin-top: 15px;
   }
   </style>
   

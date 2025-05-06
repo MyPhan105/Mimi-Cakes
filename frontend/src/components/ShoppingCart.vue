@@ -33,9 +33,10 @@
 </div>
 
         <!-- Checkout Button -->
-        <router-link to="/checkout" class="checkout-button-wrapper" @click.stop>
-          <button class="checkout-button">Checkout</button>
-        </router-link>
+        <div class="checkout-button-wrapper">
+          <button class="checkout-button" @click.stop="goToCheckout">Checkout</button>
+        </div>
+
 
       </div>
     </div>
@@ -76,9 +77,13 @@ export default {
       this.cart.splice(index, 1);
       localStorage.setItem("cart", JSON.stringify(this.cart));
     },
+
     goToCheckout() {
-    alert("Redirecting to checkout..."); // Replace with actual logic or route
-  },
+      this.$router.push("/login");  // Just redirect directly to the login page
+    }
+
+
+
   },
 };
 </script>
@@ -210,7 +215,7 @@ export default {
   display: flex;
   justify-content: center;
   margin-top: 15px;
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .checkout-button {
