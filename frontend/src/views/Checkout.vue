@@ -107,14 +107,12 @@
         return this.subtotal * 0.0825;
       },
       total() {
-        // Add $20 for delivery fee if it's a delivery
         const deliveryFee = this.deliveryOption === 'delivery' ? 20 : 0;
         return this.subtotal + this.tax + deliveryFee;
       },
     },
     methods: {
       confirmOrder() {
-        // Validate input
         if (this.deliveryOption === 'pickup') {
           if (!this.pickupDate || !this.pickupTime) {
             alert('Please select pickup date and time.');
@@ -127,16 +125,11 @@
           }
         }
   
-        // Validate payment info
         if (!this.cardNumber || !this.expiryDate || !this.cvv) {
           this.paymentError = 'Please enter your card details.';
           return;
         }
   
-        // Here, you would typically send the payment info to a secure payment gateway (e.g., Stripe, PayPal)
-        // For this example, we'll just proceed with the order
-  
-        // Prepare the order details
         const orderDetails = {
           cart: this.cart,
           deliveryOption: this.deliveryOption,
@@ -150,15 +143,17 @@
           },
         };
   
-        // Store the order in localStorage (for demonstration)
         localStorage.setItem('orderDetails', JSON.stringify(orderDetails));
-  
-        // Clear the cart after confirming the order
         localStorage.removeItem('cart');
-  
-        // Redirect to confirmation page
-        this.$router.push({ name: 'ThankYou' }); // Navigate to Thank You page
+        this.$router.push({ name: 'ThankYou' });
       },
+    },
+    created() {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        localStorage.setItem('redirectAfterLogin', this.$route.fullPath);
+        this.$router.push('/login');
+      }
     },
   };
   </script>

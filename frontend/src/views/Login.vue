@@ -18,6 +18,7 @@
   
   <script>
 import axios from 'axios';
+
 export default {
   name: "Login",
   data() {
@@ -39,24 +40,11 @@ export default {
 
         if (token) {
           localStorage.setItem("token", token);
-
-          const redirectPath = localStorage.getItem("redirectAfterLogin");
-
-          if (redirectPath) {
-            this.$router.push(redirectPath);
-            localStorage.removeItem("redirectAfterLogin");
-          } else {
-            this.$router.push("/");
-          }
-        } else {
-          alert("Login failed: No token received.");
+          // ✅ Always redirect to checkout after login
+          this.$router.push("/checkout");
         }
       } catch (error) {
-        if (error.response && error.response.data) {
-          alert(error.response.data.message);
-        } else {
-          alert("An error occurred during login.");
-        }
+        alert("Login failed! Invalid email or password.");
       }
     },
   },
