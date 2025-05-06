@@ -40,7 +40,7 @@ export default {
 
         if (token) {
           localStorage.setItem("token", token);
-          // ✅ Always redirect to checkout after login
+          //Always redirect to checkout after login
           this.$router.push("/checkout");
         }
       } catch (error) {
@@ -51,9 +51,7 @@ export default {
 };
 </script>
 
-  
-  
-  <style scoped>
+<style scoped>
   .login-container {
     max-width: 400px;
     margin: 0 auto;
@@ -62,6 +60,8 @@ export default {
     border: 1px solid #ccc;
     border-radius: 8px;
     background-color: #f9f9f9;
+    color:#000000;
+  
   }
   
   h1 {
@@ -97,6 +97,7 @@ export default {
   p {
     text-align: center;
     margin-top: 15px;
+    color: #000000;
   }
   </style>
   

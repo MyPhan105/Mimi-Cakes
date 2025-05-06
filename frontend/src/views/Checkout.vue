@@ -74,6 +74,7 @@
   </template>
   
   <script>
+  import axios from 'axios';
   import ShoppingCart from '@/components/ShoppingCart.vue';
   
   export default {
@@ -111,52 +112,65 @@
         return this.subtotal + this.tax + deliveryFee;
       },
     },
+    
     methods: {
-      confirmOrder() {
-        if (this.deliveryOption === 'pickup') {
-          if (!this.pickupDate || !this.pickupTime) {
-            alert('Please select pickup date and time.');
-            return;
-          }
-        } else if (this.deliveryOption === 'delivery') {
-          if (!this.deliveryDate || !this.deliveryTime) {
-            alert('Please select delivery date and time.');
-            return;
-          }
-        }
-  
-        if (!this.cardNumber || !this.expiryDate || !this.cvv) {
-          this.paymentError = 'Please enter your card details.';
+    async confirmOrder() {
+      if (this.deliveryOption === 'pickup') {
+        if (!this.pickupDate || !this.pickupTime) {
+          alert('Please select pickup date and time.');
           return;
         }
-  
-        const orderDetails = {
-          cart: this.cart,
-          deliveryOption: this.deliveryOption,
-          date: this.deliveryOption === 'pickup' ? this.pickupDate : this.deliveryDate,
-          time: this.deliveryOption === 'pickup' ? this.pickupTime : this.deliveryTime,
-          total: this.total,
-          payment: {
-            cardNumber: this.cardNumber,
-            expiryDate: this.expiryDate,
-            cvv: this.cvv,
+      } else if (this.deliveryOption === 'delivery') {
+        if (!this.deliveryDate || !this.deliveryTime) {
+          alert('Please select delivery date and time.');
+          return;
+        }
+      }
+
+      if (!this.cardNumber || !this.expiryDate || !this.cvv) {
+        this.paymentError = 'Please enter your card details.';
+        return;
+      }
+
+      try {
+        const token = localStorage.getItem('token');
+        const userId = localStorage.getItem('userId'); // Make sure userId is stored after login
+
+        const response = await axios.post(
+          'http://localhost:3000/api/orders/createOrder',
+          {
+            userId: userId || 1, // Replace fallback with actual userId handling
+            cart: this.cart,
+            deliveryOption: this.deliveryOption,
+            date: this.deliveryOption === 'pickup' ? this.pickupDate : this.deliveryDate,
+            time: this.deliveryOption === 'pickup' ? this.pickupTime : this.deliveryTime,
+            total: this.total,
           },
-        };
-  
-        localStorage.setItem('orderDetails', JSON.stringify(orderDetails));
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        console.log(response.data);
         localStorage.removeItem('cart');
         this.$router.push({ name: 'ThankYou' });
-      },
-    },
-    created() {
-      const token = localStorage.getItem('token');
-      if (!token) {
-        localStorage.setItem('redirectAfterLogin', this.$route.fullPath);
-        this.$router.push('/login');
+      } catch (error) {
+        console.error('Error placing order:', error);
+        alert('Something went wrong while placing your order.');
       }
     },
-  };
-  </script>
+  },
+  created() {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      localStorage.setItem('redirectAfterLogin', this.$route.fullPath);
+      this.$router.push('/login');
+    }
+  },
+};
+</script>
   
   <style scoped>
   .checkout-page {

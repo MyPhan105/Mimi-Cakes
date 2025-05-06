@@ -43,6 +43,7 @@ export default {
         image: this.product.image,
         size: size.label,
         price: size.price,
+        cake_id: size.cake_id,
       });
     },
   },

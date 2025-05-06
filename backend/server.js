@@ -5,14 +5,18 @@ const express = require('express');
 const cors = require('cors');
 const authRoutes = require('./routes/auth');
 const pool = require('./db'); // Use the shared pool from db.js
+const orderRoutes = require('./routes/orders');
 
 const app = express();
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use('/api/orders', orderRoutes);
 
-// ✅ Test the database connection using a simple query
+
+
+//Test the database connection using a simple query
 pool.query('SELECT 1')
   .then(() => console.log('Successfully connected to the database'))
   .catch(err => console.error('Error connecting to the database:', err));
